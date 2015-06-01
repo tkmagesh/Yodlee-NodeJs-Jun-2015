@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Click Tracker</title>
+    <script>
+        (function myApp(){
+            window.addEventListener("DOMContentLoaded", init);
+            function init(){
+                document.getElementById("btnTrack1").addEventListener("click", getBtnTrackerFor("divMessage1"));
+                document.getElementById("btnTrack2").addEventListener("click", getBtnTrackerFor("divMessage2"));
+                document.getElementById("btnTrack3").addEventListener("click", getBtnTrackerFor("divMessage3"));
+            }
+            function getBtnTrackerFor(elementId){
+                var count = 0
+                return function(){
+                    ++count;
+                    document.getElementById(elementId).innerHTML = count;
+                }
+            }
+        })();
+    </script>
 </head>
 <body>
-    <input type="button" value="Track" id="btnTrack">
-    <div id="divMessage"></div>
+    <input type="button" value="Track" id="btnTrack1">
+    <div id="divMessage1"></div>
+    <input type="button" value="Track" id="btnTrack2">
+    <div id="divMessage2"></div>
+    <input type="button" value="Track" id="btnTrack3">
+    <div id="divMessage3"></div>
 </body>
 </html>
