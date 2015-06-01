@@ -1,14 +1,13 @@
 function add(x,y,onResult){
    setTimeout(function(){
       console.log("returning result");
-      //if (!x || !y) throw new Error("Invalid arguments");
-       if (!x || !y) {
-           onResult(new Error("Invalid arguments"), null);
-           return;
+      if (x && y){
+            var result = x + y;
+            if (typeof onResult === "function"){
+                onResult(null, result);
+            return;
        }
-      var result = x + y;
-      if (typeof onResult === "function")
-         onResult(null, result);
+       onResult(new Error("Invalid arguments"), null);
     },3000);
 }
 
