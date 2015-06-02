@@ -33,3 +33,15 @@ function f4(next){
 
 var fns = [f1, f2, f3, f4];
 
+function run(fns){
+    var first = fns[0],
+        remaining = fns.slice(1);
+    if (first){
+        first(function(){
+            run(remaining);
+        });
+    }
+}
+
+run(fns);
+
