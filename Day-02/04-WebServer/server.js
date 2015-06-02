@@ -1,5 +1,6 @@
 var http = require("http"),
-    app = require("./app");
+    app = require("./app"),
+    path =  require("path");
 var dataParser = require("./dataParser");
 var staticResourceServer = require("./staticResourceServer");
 var calculatorRoute = require("./calculatorRoute");
@@ -7,7 +8,7 @@ var notFound = require("./notFound");
 
 
 app.use(dataParser)
-app.use(staticResourceServer);
+app.use(staticResourceServer(path.join(__dirname, "public")));
 app.use(calculatorRoute);
 app.use(notFound);
 

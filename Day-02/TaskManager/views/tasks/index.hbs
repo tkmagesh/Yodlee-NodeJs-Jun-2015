@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <style>
+        .closed {
+            text-decoration: line-through;
+            font-style: italic;
+            color : red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <ol>
+      {{#each tasks}}
+       <li>
+
+           {{#if this.isClosed}}
+               <span class="closed">{{this.name}}</span>
+           {{else}}
+            <span>{{this.name}}</span>
+           {{/if}}
+        <a href="/tasks/toggle?taskId={{this.id}}">X</a>
+       </li>
+        {{/each}}
+    </ol>
+    <form action="/tasks/delete" method="post">
+        <input type="submit" value="Remove Completed">
+    </form>
+</body>
+</html>
